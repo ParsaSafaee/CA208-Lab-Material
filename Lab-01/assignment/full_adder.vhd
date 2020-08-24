@@ -20,6 +20,8 @@
 ---  Module Name: Full Adder
 ---  Description: Full Adder using Half Adders
 -----------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 entity full_adder is
 	port (
 		a    : in  std_logic;
@@ -31,8 +33,17 @@ entity full_adder is
 end full_adder;
 
 architecture full_adder_arc of full_adder is
+	signal w1 : std_logic;
+	signal w2 : std_logic;
+	signal w3 : std_logic;
+   
 begin
-	
-	-- write your code here!
+ 
+	w1 <= a xor b;
+	w2 <= w1 and cin;
+	w3 <= a and b;
+ 
+	sum   <= w1 xor cin;
+	cout <= w2 or w3;
 
 end full_adder_arc;
